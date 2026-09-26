@@ -7,3 +7,4 @@ node_modules
 test.mjs
 wrangler.jsonc
 README.md
+CLAUDE.md
