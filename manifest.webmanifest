@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "LANDING DAY — 試験の日に着陸する暗記カード",
+  "short_name": "LANDING DAY",
+  "description": "問題と答えを打って暗記カードを作り、試験の日を決めると、毎日「今日の分」だけ出てくる。上の滑走路のメーターで、今のペースで試験の日に全部覚えて着陸できるかが一目で分かる。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0f22",
+  "theme_color": "#0a0f22",
+  "lang": "ja",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
