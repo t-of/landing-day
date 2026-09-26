@@ -1,6 +1,6 @@
 # LANDING DAY — 試験の日に着陸する暗記カード
 
-問題と答えを打って暗記カードを作り、試験の日を決めると、毎日「今日の分」だけ出てくる。上の滑走路のメーターで、今のペースで試験の日に全部覚えて着陸できるかが一目で分かる。
+暗記カードアプリ LANDING DAY。問題と答えを打って暗記カードを作り、試験の日を決めると、毎日「今日の分」だけ出てくる。上の滑走路のメーターで、今のペースで試験の日に全部覚えて着陸できるかが一目で分かる。
 
 English: Type questions and answers to make flashcards, set your exam date, and get just today's share each day. The runway meter at the top shows at a glance whether you'll land with everything learned by exam day.
 

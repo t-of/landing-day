@@ -5,8 +5,8 @@ import * as D from './deck.js';
 // {n} などは差し込み。n === 1 のときは「キー_1」があればそちらを使う（英語の複数形）。
 const T = {
   ja: {
-    'app.title': 'LANDING DAY — 試験の日に着陸する暗記カード',
-    'app.desc': '問題と答えを打って暗記カードを作り、試験の日を決めると、毎日「今日の分」だけ出てくる。上の滑走路のメーターで、今のペースで試験の日に全部覚えて着陸できるかが一目で分かる。',
+    'app.title': 'LANDING DAY — 暗記カード：試験日から逆算',
+    'app.desc': '暗記カードアプリ LANDING DAY。問題と答えを打って暗記カードを作り、試験の日を決めると、毎日「今日の分」だけ出てくる。上の滑走路のメーターで、今のペースで試験の日に全部覚えて着陸できるかが一目で分かる。',
     'coach.title': 'LANDING DAY の使い方',
     'coach.1': '試験の名前と日付を決める。',
     'coach.2': '問題と答えを打ってカードを作る。まとめて貼り付けもできる。',
@@ -89,8 +89,8 @@ const T = {
     brand: 'T.OF... のアプリ',
   },
   en: {
-    'app.title': 'LANDING DAY — Flashcards that land on exam day',
-    'app.desc': "Type questions and answers to make flashcards, set your exam date, and get just today's share each day. The runway meter at the top shows at a glance whether you'll land with everything learned by exam day.",
+    'app.title': 'LANDING DAY — Flashcards That Land on Exam Day',
+    'app.desc': "Flashcard app LANDING DAY. Type questions and answers to make flashcards, set your exam date, and get just today's share each day. The runway meter at the top shows at a glance whether you'll land with everything learned by exam day.",
     'coach.title': 'How LANDING DAY works',
     'coach.1': "Set your exam's name and date.",
     'coach.2': 'Type a question and answer to make a card. You can paste many at once.',
