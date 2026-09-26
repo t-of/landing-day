@@ -87,6 +87,7 @@ const T = {
     'kit.share': '共有',
     'ui.close': '閉じる',
     brand: 'T.OF... のアプリ',
+    contact: '問い合わせ',
   },
   en: {
     'app.title': 'LANDING DAY — Flashcards That Land on Exam Day',
@@ -177,6 +178,7 @@ const T = {
     'kit.share': 'Share',
     'ui.close': 'Close',
     brand: 'An app by T.OF...',
+    contact: 'Contact',
   },
 };
 const LANG = (navigator.language || '').toLowerCase().startsWith('ja') ? 'ja' : 'en';
