@@ -6,7 +6,7 @@ English: Type questions and answers to make flashcards, set your exam date, and 
 
 ## 🔗 リンク
 
-- 使う: https://t-of.github.io/landing-day/
+- 使う: https://landing-day.t-of.workers.dev/
 - 制作: [T.OF...](https://t-of.github.io/)
 
 ## 遊び方

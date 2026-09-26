@@ -193,7 +193,7 @@ const fmtDate = (s) => new Intl.DateTimeFormat(LANG, { month: LANG === 'ja' ? 'l
 document.documentElement.lang = LANG;
 document.title = t('app.title');
 WebAppKit.init({ lang: LANG, title: 'LANDING DAY', text: t('app.desc') });
-const SHARE_URL = 'https://t-of.github.io/landing-day/';
+const SHARE_URL = 'https://landing-day.t-of.workers.dev/';
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js');

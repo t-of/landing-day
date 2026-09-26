@@ -1,6 +1,6 @@
 # LANDING DAY
 
-T.OF... のアプリ。https://t-of.github.io/landing-day/
+T.OF... のアプリ。https://landing-day.t-of.workers.dev/（Cloudflare Workers 静的アセットで配る）
 
 - ルールは本部の `~/GitHub/tof/t-of.github.io/RULES.md` に従う（全アプリ共通）。ブランドは `docs/BRAND.md`。
 - 直したら本部で `npm run audit:browser -- landing-day` を通す。
