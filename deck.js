@@ -72,6 +72,20 @@ export function ensureToday(log, cards, exam, today) {
 
 export const remaining = (t) => (t ? Math.max(0, t.queue.length - t.pos) : 0);
 
+// 残りの今日の分の内訳: まだ出していないカード（新しい）と、それ以外（復習）
+export function split(t, cards) {
+  const byId = new Map(cards.map((c) => [c.id, c]));
+  const out = { review: 0, fresh: 0 };
+  for (const id of new Set(t ? t.queue.slice(t.pos) : [])) {
+    const c = byId.get(id);
+    if (c) out[c.lv === 0 && c.due == null ? 'fresh' : 'review']++;
+  }
+  return out;
+}
+
+// 明日の今日の分の見込み（今の段のまま明日になったとして計算する）
+export const forecast = (cards, exam, today) => buildToday(cards, exam, addDays(today, 1)).queue.length;
+
 // 「覚えた」(good = true) /「まだ」。deck と log を書き換える
 export function answer(deck, log, exam, good) {
   const t = log.today;
@@ -122,6 +136,8 @@ export function streak(days, today) {
   for (let d = today; days[d]?.fin; d = addDays(d, -1)) n++;
   return n;
 }
+// ホーム用: 今日まだ終えていなければ、昨日までの続きを数える（今日やれば途切れない）
+export const streakNow = (days, today) => streak(days, days[today]?.fin ? today : addDays(today, -1));
 
 // ---- カード ----
 // 足した数を返す。無料の上限を越えるぶんは足さない

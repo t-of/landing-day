@@ -43,7 +43,7 @@ h3 { margin: 22px 0 8px; font-size: 13px; color: var(--muted); font-weight: 600;
   touch-action: manipulation;   /* ダブルタップ拡大を止める */
 }
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; }
-.bar__title { margin: 0; font-size: 18px; letter-spacing: 0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar__title { flex: 1; min-width: 0; margin: 0; font-size: 18px; letter-spacing: 0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bar__actions { display: flex; gap: 8px; flex: none; }
 .pill {
   border: 1px solid var(--line);
@@ -77,6 +77,7 @@ h3 { margin: 22px 0 8px; font-size: 13px; color: var(--muted); font-weight: 600;
 .runway__date { fill: var(--muted); font-size: 11px; }
 .meter__line { margin: 12px 2px 0; font-size: 15px; color: var(--muted); line-height: 1.6; text-align: center; }
 .meter__line span { white-space: nowrap; }
+.meter__line span:first-child { white-space: normal; overflow-wrap: anywhere; } /* 試験の名前が長くても幅を超えない */
 .meter__line span + span::before { content: '・'; margin-right: 0.4em; }
 .meter__line .is-onPace { color: var(--good); font-weight: 700; }
 .meter__line .is-bitBehind, .meter__line .is-behind { color: var(--late); font-weight: 700; }
@@ -92,9 +93,23 @@ h3 { margin: 22px 0 8px; font-size: 13px; color: var(--muted); font-weight: 600;
   -webkit-user-select: none;
 }
 .today, .landed { display: flex; flex-direction: column; gap: 10px; }
-.today__done { margin: 0 0 6px; text-align: center; font-size: 22px; font-weight: 700; color: var(--good); }
 .landed { text-align: center; }
-.landed__title { margin: 0; font-size: 24px; font-weight: 700; }
+.landed__title { margin: 0; font-size: 24px; font-weight: 700; overflow-wrap: anywhere; }
+
+/* 今日の分の内訳。メーターと下のボタンのあいだのまん中に置く */
+.plan {
+  margin: auto 0;
+  padding: 14px 16px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.plan__title { margin: 0 0 12px; font-size: 15px; color: var(--muted); font-weight: 600; }
+.plan.is-done .plan__title { color: var(--good); font-size: 17px; font-weight: 700; }
+.plan__stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.plan__stats div { padding: 10px 12px; border-radius: 12px; background: var(--bg); }
+.plan__stats dt { font-size: 12px; color: var(--muted); }
+.plan__stats dd { margin: 2px 0 0; font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .landed__sub { margin: 0 0 10px; color: var(--muted); }
 
 .big {

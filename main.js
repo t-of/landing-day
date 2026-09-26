@@ -33,6 +33,13 @@ const T = {
     'home.todayCap': '今日の分 {n} 枚（残りは明日）',
     'home.doneToday': '今日の分おわり ✓',
     'home.more': 'もう少しやる',
+    'plan.title': '今日の分の内訳',
+    'plan.review': '復習（枚）',
+    'plan.new': '新しい（枚）',
+    'plan.flipped': '今日めくった（枚）',
+    'plan.tomorrow': '明日の見込み（枚）',
+    'plan.streak': 'つづけた（日）',
+    'plan.daysLeft': '試験まで（日）',
     'home.makeCards': 'カードを作る',
     'nav.cards': 'カード',
     'nav.settings': '設定',
@@ -112,6 +119,13 @@ const T = {
     'home.todayCap': 'Today: {n} cards (rest tomorrow)',
     'home.doneToday': 'Done for today ✓',
     'home.more': 'Do a few more',
+    'plan.title': "Today's share",
+    'plan.review': 'Review',
+    'plan.new': 'New',
+    'plan.flipped': 'Flipped today',
+    'plan.tomorrow': 'Tomorrow (est.)',
+    'plan.streak': 'Day streak',
+    'plan.daysLeft': 'Days to exam',
     'home.makeCards': 'Make cards',
     'nav.cards': 'Cards',
     'nav.settings': 'Settings',
@@ -342,6 +356,7 @@ function render() {
 
   $('landed').hidden = !landed;
   $('today').hidden = landed;
+  $('plan').hidden = true;
   if (landed) {
     $('landedTitle').textContent = t('landed.title', { name: examName() });
     $('landedSub').textContent = t('meter.learned', { p: pct() });
@@ -363,11 +378,26 @@ function render() {
     doneToday = left === 0;
     btn.textContent = t(td.capped ? 'home.todayCap' : 'home.today', { n: left });
     btn.dataset.act = 'study';
+    renderPlan(td, doneToday, d);
   }
   btn.hidden = doneToday;
-  $('todayDone').hidden = !doneToday;
-  $('todayDone').textContent = t('home.doneToday');
   $('btnMore').hidden = !(doneToday && D.moreLeft(deck, log));
+}
+
+// 今日の分の内訳のカード。終わったら、めくった数と明日の見込み
+function renderPlan(td, done, d) {
+  const [l1, v1, l2, v2] = done
+    ? ['plan.flipped', log.days[d]?.n || 0, 'plan.tomorrow', D.forecast(deck.cards, exam, d)]
+    : ['plan.review', D.split(td, deck.cards).review, 'plan.new', D.split(td, deck.cards).fresh];
+  $('plan').hidden = false;
+  $('plan').classList.toggle('is-done', done);
+  $('planTitle').textContent = t(done ? 'home.doneToday' : 'plan.title');
+  $('planL1').textContent = t(l1);
+  $('planV1').textContent = fmtNum(v1);
+  $('planL2').textContent = t(l2);
+  $('planV2').textContent = fmtNum(v2);
+  $('planStreak').textContent = fmtNum(D.streakNow(log.days, d));
+  $('planDays').textContent = fmtNum(D.daysLeft(exam, d));
 }
 
 $('btnToday').addEventListener('click', () => {

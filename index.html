@@ -44,6 +44,16 @@
     <p class="meter__line" id="meterLine"></p>
 
     <section class="stage" id="stage">
+      <!-- 今日の分の内訳（メーターと下のボタンのあいだ） -->
+      <section class="plan" id="plan" hidden>
+        <h2 class="plan__title" id="planTitle"></h2>
+        <dl class="plan__stats">
+          <div><dt id="planL1"></dt><dd id="planV1"></dd></div>
+          <div><dt id="planL2"></dt><dd id="planV2"></dd></div>
+          <div><dt data-t="plan.streak"></dt><dd id="planStreak"></dd></div>
+          <div><dt data-t="plan.daysLeft"></dt><dd id="planDays"></dd></div>
+        </dl>
+      </section>
       <div class="landed" id="landed" hidden>
         <p class="landed__title" id="landedTitle"></p>
         <p class="landed__sub" id="landedSub"></p>
@@ -51,7 +61,6 @@
         <button class="ghost" id="btnShareLanded" data-t="kit.share">共有</button>
       </div>
       <div class="today" id="today">
-        <p class="today__done" id="todayDone" hidden></p>
         <button class="big" id="btnToday"></button>
         <button class="ghost" id="btnMore" data-t="home.more" hidden>もう少しやる</button>
       </div>

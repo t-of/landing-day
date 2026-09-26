@@ -175,6 +175,23 @@ test('続けた日数', () => {
   const days = { [TODAY]: { fin: true }, [D.addDays(TODAY, -1)]: { fin: true }, [D.addDays(TODAY, -3)]: { fin: true } };
   assert.equal(D.streak(days, TODAY), 2);
   assert.equal(D.streak({}, TODAY), 0);
+  assert.equal(D.streakNow({ [D.addDays(TODAY, -1)]: { fin: true } }, TODAY), 1, '今日まだなら昨日までを数える');
+  assert.equal(D.streakNow(days, TODAY), 2);
+});
+
+test('ホームの内訳: 残りの復習と新しい、明日の見込み', () => {
+  const exam = { name: 'x', date: D.addDays(TODAY, 20), start: TODAY };
+  const deck = deckOf(36);
+  deck.cards[0].lv = 1; deck.cards[0].due = TODAY;
+  const log = log0();
+  D.ensureToday(log, deck.cards, exam, TODAY);
+  assert.deepEqual(D.split(log.today, deck.cards), { review: 1, fresh: 2 });
+  D.answer(deck, log, exam, true); // 復習を 1 枚
+  assert.deepEqual(D.split(log.today, deck.cards), { review: 0, fresh: 2 });
+  assert.deepEqual(D.split(null, deck.cards), { review: 0, fresh: 0 });
+  // 明日: 残り 19 日・段 0 が 35 枚 → 切り上げ(35/17) = 3 枚（段 2 のカードは 3 日後なので入らない）
+  assert.equal(D.forecast(deck.cards, exam, TODAY), 3);
+  assert.equal(D.forecast(deck.cards, { ...exam, date: D.addDays(TODAY, 1) }, TODAY), 0, '明日が試験の日なら 0');
 });
 
 test('消す: 今日の並びからも抜き、めくった位置を合わせる', () => {
